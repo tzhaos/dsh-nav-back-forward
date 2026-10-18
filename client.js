@@ -129,8 +129,8 @@ window.__ModuleLoader__.load({
     function Chevron({ forward }) {
       return h('svg', {
         viewBox: '0 0 16 16',
-        width: 15,
-        height: 15,
+        width: 13,
+        height: 13,
         fill: 'none',
         stroke: 'currentColor',
         strokeWidth: 1.7,
@@ -202,8 +202,8 @@ window.__ModuleLoader__.load({
 }
 .dshnb-button {
   box-sizing: border-box;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: grid;
   place-items: center;
   padding: 0;

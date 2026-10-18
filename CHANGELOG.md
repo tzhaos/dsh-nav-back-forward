@@ -4,6 +4,17 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-10-19
+
+### Changed
+
+- Shrink the titlebar Back/Forward buttons to 18px so the pair fits left of the rail-owned sidebar
+  toggle without overlapping it.
+
+### Verified
+
+- `node scripts/check.mjs`: 11 checks green.
+
 ## [1.3.0] - 2026-10-19
 
 ### Changed
