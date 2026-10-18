@@ -101,6 +101,7 @@ function scenario() {
           element.children = children.length === 1 ? children[0] : children
           return element
         },
+        useRef(initial) { return { current: initial } },
         useState(initial) {
           const index = cursor++
           if (!(index in hooks)) hooks[index] = initial
@@ -140,7 +141,7 @@ function buttons(tree) {
 // Static contract
 await check('manifest declares a DSH bundle and web client half', () => {
   assert.equal(manifest.name, 'dsh-nav-back-forward')
-  assert.equal(manifest.version, '1.1.1')
+  assert.equal(manifest.version, '1.2.0')
   assert.equal(manifest.license, 'MIT')
   assert.equal(manifest.main, 'index.js')
   assert.equal(manifest.exports['./client'], './client.js')

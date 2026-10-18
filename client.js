@@ -15,7 +15,7 @@ window.__ModuleLoader__.load({
   id: 'dsh-nav-back-forward',
   factory(require) {
     const React = require('react')
-    const { useEffect, useState } = React
+    const { useEffect, useRef, useState } = React
     const h = React.createElement
 
     const NS = 'navBackForward'
@@ -147,7 +147,35 @@ window.__ModuleLoader__.load({
      */
     function NavControls({ nav, t }) {
       const [state, setState] = useState(nav.getSnapshot())
+      const rootRef = useRef(null)
       useEffect(() => nav.subscribe(setState), [nav])
+      useEffect(() => {
+        const place = () => {
+          const root = rootRef.current
+          if (root === null || root === undefined || typeof root.getBoundingClientRect !== 'function') return
+          let toggle = null
+          for (const button of document.querySelectorAll?.('button[aria-label]') ?? []) {
+            if (button.closest?.('[data-dshnb-nav]') !== null && button.closest?.('[data-dshnb-nav]') !== undefined) continue
+            const label = button.getAttribute?.('aria-label') ?? ''
+            if (/侧栏|sidebar/i.test(label)) { toggle = button; break }
+          }
+          if (toggle === null || typeof toggle.getBoundingClientRect !== 'function') return
+          const anchor = toggle.getBoundingClientRect()
+          const own = root.getBoundingClientRect()
+          const top = anchor.top + Math.max(0, (anchor.height - own.height) / 2)
+          root.style.top = Math.max(0, top) + 'px'
+        }
+        place()
+        window.addEventListener?.('resize', place)
+        document.addEventListener?.('scroll', place, true)
+        const observer = typeof MutationObserver === 'function' ? new MutationObserver(place) : null
+        observer?.observe?.(document.body, { childList: true, subtree: true })
+        return () => {
+          window.removeEventListener?.('resize', place)
+          document.removeEventListener?.('scroll', place, true)
+          observer?.disconnect?.()
+        }
+      }, [])
       useEffect(() => {
         const onKeyDown = (event) => {
           if (!event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
@@ -163,7 +191,7 @@ window.__ModuleLoader__.load({
         return () => document.removeEventListener('keydown', onKeyDown, true)
       }, [nav])
       if (state.entries.length === 0) return null
-      return h('div', { className: 'dshnb-nav', 'data-dshnb-nav': '' },
+      return h('div', { ref: rootRef, className: 'dshnb-nav', 'data-dshnb-nav': '' },
         h('button', {
           type: 'button',
           className: 'dshnb-button',
@@ -196,11 +224,8 @@ window.__ModuleLoader__.load({
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  padding: 2px;
-  border-radius: 9px;
-  background: color-mix(in srgb, var(--dsw-alias-bg-base) 86%, transparent);
-  border: 1px solid var(--dsw-alias-border-l2);
-  box-shadow: var(--dsw-elevation-soft);
+  padding: 0;
+  background: transparent;
   -webkit-app-region: no-drag;
 }
 .dshnb-button {
