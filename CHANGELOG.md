@@ -1,3 +1,14 @@
+## [1.3.4] - 2026-10-19
+
+### Fixed
+
+- Inject `uiSession` and `uiWorkspace` before applying. On a fresh desktop boot the proxies exist
+  before `current` is populated, so the controls previously returned early and never mounted.
+
+### Verified
+
+- `node scripts/check.mjs`: 11 checks green.
+
 # Changelog
 
 All notable changes to this project are documented in this file.

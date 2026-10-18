@@ -236,16 +236,16 @@ window.__ModuleLoader__.load({
       if (uiSession?.current === undefined || typeof uiWorkspace?.openSession !== 'function') return
       const nav = createNavigation(uiSession, uiWorkspace)
       ctx.effect(() => () => nav.dispose(), 'nav-back-forward: history subscription')
-      ctx.effect(() => ctx.slots.register({
+      ctx.effect(() => ctx.slots.inject('shell.overlay', () => ctx.slots.register({
         name: 'shell.overlay',
         id: 'nav-back-forward.controls',
         locale: NS,
         inject: () => ({ nav }),
-      }, NavControls), 'nav-back-forward: controls')
+      }, NavControls)), 'nav-back-forward: controls')
     }
 
     return {
-      inject: ['slots', 'locale'],
+      inject: ['slots', 'locale', 'uiSession', 'uiWorkspace'],
       apply,
     }
   },

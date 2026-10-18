@@ -124,6 +124,7 @@ function scenario() {
     },
     slots: {
       register(options, component) { registrations.push({ options, component }); return () => {} },
+      inject(name, callback) { return callback() },
     },
   }
   plugin.apply(ctx)
@@ -141,7 +142,7 @@ function buttons(tree) {
 // Static contract
 await check('manifest declares a DSH bundle and web client half', () => {
   assert.equal(manifest.name, 'dsh-nav-back-forward')
-  assert.equal(manifest.version, '1.3.3')
+  assert.equal(manifest.version, '1.3.4')
   assert.equal(manifest.license, 'MIT')
   assert.equal(manifest.main, 'index.js')
   assert.equal(manifest.exports['./client'], './client.js')
