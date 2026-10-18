@@ -13,7 +13,7 @@ browser-style back/forward controls.
 
 ## Behaviour
 
-- pinned to the window top-left corner (`left: 4px; top: 4px`), immediately left of the sidebar toggle
+- pinned into the window titlebar (`left: 4px; top: 8px`), immediately left of the sidebar toggle
 - two compact buttons
 - records the main view's Session history
 - Back reopens the previous Session; Forward reopens the next
