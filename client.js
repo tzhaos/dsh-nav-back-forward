@@ -191,7 +191,7 @@ window.__ModuleLoader__.load({
         style.textContent = `.dshnb-nav {
   position: fixed;
   left: 4px;
-  top: 4px;
+  top: calc(var(--dsh-frame-top-clearance, 0px) + 6px);
   z-index: 96;
   display: inline-flex;
   align-items: center;
