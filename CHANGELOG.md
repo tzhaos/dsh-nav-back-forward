@@ -4,6 +4,17 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2026-10-19
+
+### Changed
+
+- Use 14px titlebar buttons to fit the pair plus the rail-owned toggle before the native menu bar's
+  48px leading area; vertically center the row on the menu height.
+
+### Verified
+
+- `node scripts/check.mjs`: 11 checks green.
+
 ## [1.3.1] - 2026-10-19
 
 ### Changed

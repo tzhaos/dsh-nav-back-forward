@@ -129,8 +129,8 @@ window.__ModuleLoader__.load({
     function Chevron({ forward }) {
       return h('svg', {
         viewBox: '0 0 16 16',
-        width: 13,
-        height: 13,
+        width: 11,
+        height: 11,
         fill: 'none',
         stroke: 'currentColor',
         strokeWidth: 1.7,
@@ -191,18 +191,18 @@ window.__ModuleLoader__.load({
         style.textContent = `.dshnb-nav {
   position: fixed;
   left: 4px;
-  top: 8px;
+  top: 9px;
   z-index: 96;
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: 1px;
   padding: 0;
   background: transparent;
   -webkit-app-region: no-drag;
 }
 .dshnb-button {
   box-sizing: border-box;
-  width: 18px;
+  width: 14px;
   height: 18px;
   display: grid;
   place-items: center;
