@@ -1,6 +1,6 @@
 {
   "name": "dsh-nav-back-forward",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "private": true,
   "description": "Back and forward controls for DeepSeek Harness session navigation, pinned to the top-left.",
   "type": "module",

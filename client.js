@@ -190,8 +190,8 @@ window.__ModuleLoader__.load({
         style.dataset.dshPlugin = 'dsh-nav-back-forward'
         style.textContent = `.dshnb-nav {
   position: fixed;
-  left: 4px;
-  top: 9px;
+  left: 3px;
+  top: 10px;
   z-index: 96;
   display: inline-flex;
   align-items: center;
@@ -213,8 +213,9 @@ window.__ModuleLoader__.load({
   color: var(--dsw-alias-label-secondary);
   cursor: pointer;
 }
-.dshnb-button:hover:not(:disabled) {
-  background: var(--dsw-alias-interactive-bg-hover);
+.dshnb-button:hover:not(:disabled),
+.dshnb-button:focus-visible:not(:disabled) {
+  background: transparent;
   color: var(--dsw-alias-label-primary);
 }
 .dshnb-button:focus-visible {
