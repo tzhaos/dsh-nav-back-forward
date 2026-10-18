@@ -2,7 +2,7 @@
 
 简体中文 | [English](README.en.md)
 
-一个 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web 客户端插件：在左上角
+一个 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web 客户端插件：在窗口左上角
 提供 **后退 / 前进** 按钮，在最近切换过的会话之间导航。
 
 ## 为什么
@@ -12,7 +12,8 @@ DSH 的主视图一次只显示一个 Session。从侧边栏连续切换会话�
 
 ## 行为
 
-- 在左上角显示两个紧凑按钮
+- 固定贴在窗口左上角（`left: 4px; top: 4px`），紧挨侧边栏展开/收起图标左侧
+- 两个紧凑按钮
 - 记录主视图当前 Session 的切换历史
 - 后退回到上一个 Session，前进回到下一个
 - 没有可后退/可前进项时按钮禁用
@@ -29,7 +30,7 @@ DSH 的主视图一次只显示一个 Session。从侧边栏连续切换会话�
 3. 外部导航产生的新分支会截断旧的前进记录；
 4. 打开失败时恢复索引。
 
-按钮使用主题 token，固定在左上角 `--dsh-frame-top-clearance` 下方。
+按钮使用主题 token，固定在窗口左上角，不随标题栏留白下移。
 
 ## 安装
 
