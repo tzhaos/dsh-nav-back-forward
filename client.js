@@ -129,19 +129,19 @@ window.__ModuleLoader__.load({
     function Chevron({ forward }) {
       return h('svg', {
         viewBox: '0 0 16 16',
-        width: 11,
-        height: 11,
+        width: 16,
+        height: 16,
         fill: 'none',
         stroke: 'currentColor',
-        strokeWidth: 1.7,
+        strokeWidth: 1.5,
         strokeLinecap: 'round',
         strokeLinejoin: 'round',
         'aria-hidden': true,
-      }, h('path', { d: forward ? 'M5.5 3.5 10 8l-4.5 4.5' : 'M10.5 3.5 6 8l4.5 4.5' }))
+      }, h('path', { d: forward ? 'M6 3.5 10.5 8 6 12.5' : 'M10 3.5 5.5 8 10 12.5' }))
     }
 
     /**
-     * Two top-left controls backed by the session history.
+     * Two caption-row controls backed by the session history.
      * @param {object} props - navigation controller and translator.
      * @returns {object|null} controls, or null before a session is known.
      */
@@ -190,37 +190,50 @@ window.__ModuleLoader__.load({
         style.dataset.dshPlugin = 'dsh-nav-back-forward'
         style.textContent = `.dshnb-nav {
   position: fixed;
-  left: 3px;
-  top: 10px;
-  z-index: 96;
+  /* Windows desktop: sit in the caption row, right-aligned to the sidebar column,
+     on the same 28px axis as the sidebar toggle parked at left:12px. */
+  top: calc((var(--dsh-windows-titlebar-height, 48px) - 28px) / 2);
+  left: calc(var(--dsh-windows-sidebar-width, 280px) - 12px - 58px);
+  z-index: 30;
   display: inline-flex;
   align-items: center;
-  gap: 1px;
+  gap: 2px;
   padding: 0;
   background: transparent;
   -webkit-app-region: no-drag;
 }
+/* Plain browser and macOS keep the original top-left corner seat. */
+html:not([data-windows-titlebar]) .dshnb-nav {
+  top: 10px;
+  left: 3px;
+  z-index: 96;
+}
+/* The collapsed Windows sidebar yields its column to the caption buttons. */
+[data-windows-titlebar] [data-sidebar-collapsed] .dshnb-nav {
+  display: none;
+}
 .dshnb-button {
   box-sizing: border-box;
-  width: 14px;
-  height: 18px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
   padding: 0;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--dsw-radius-sm, 6px);
   background: transparent;
   color: var(--dsw-alias-label-secondary);
   cursor: pointer;
+  -webkit-app-region: no-drag;
 }
 .dshnb-button:hover:not(:disabled),
 .dshnb-button:focus-visible:not(:disabled) {
-  background: transparent;
+  background: var(--dsw-alias-interactive-bg-hover);
   color: var(--dsw-alias-label-primary);
 }
 .dshnb-button:focus-visible {
   outline: 2px solid var(--dsw-alias-state-business-primary);
-  outline-offset: 1px;
+  outline-offset: -2px;
 }
 .dshnb-button:disabled {
   opacity: .35;

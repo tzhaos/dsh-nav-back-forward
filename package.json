@@ -2,7 +2,7 @@
   "name": "dsh-nav-back-forward",
   "version": "1.3.4",
   "private": true,
-  "description": "Back and forward controls for DeepSeek Harness session navigation, pinned to the top-left.",
+  "description": "Back and forward controls for DeepSeek Harness session navigation, pinned to the sidebar's top-right in the Windows caption row.",
   "type": "module",
   "main": "index.js",
   "exports": {

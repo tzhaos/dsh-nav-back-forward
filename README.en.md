@@ -3,7 +3,8 @@
 [简体中文](README.md) | English
 
 A [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web client plugin that adds
-**Back / Forward** controls in the window top-left corner for navigating between recently opened conversations.
+**Back / Forward** controls at the top-right of the sidebar column, inside the Windows caption row,
+for navigating between recently opened conversations.
 
 ## Why
 
@@ -13,8 +14,10 @@ browser-style back/forward controls.
 
 ## Behaviour
 
-- pinned into the window titlebar (`left: 4px; top: 8px`), immediately left of the sidebar toggle
-- two compact buttons
+- Windows desktop: pinned in the caption row at the sidebar column's top-right, on the sidebar toggle's
+  28px axis and at the same 28×28 size
+- browser and macOS: keep the original window top-left seat
+- hidden together with the column when the sidebar is collapsed
 - records the main view's Session history
 - Back reopens the previous Session; Forward reopens the next
 - buttons disable when there is nowhere to go
